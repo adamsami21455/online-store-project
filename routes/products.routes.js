@@ -1,6 +1,8 @@
 const router = require("express").Router()
-const Product = require('../models/Product')
 const isSignedIn = require('../middleware/is-signed-in.js')
+const Product = require('../models/Product')
+const Review = require('../models/Review.js')
+
 
 
 
@@ -66,7 +68,7 @@ router.delete('/:productId', isSignedIn, async (req, res) => {
     res.redirect('/products')
 })
 
-router.post('./:productId/reviews', isSignedIn, async (req, res) => {
+router.post('/:productId/reviews', isSignedIn, async (req, res) => {
     const {rating, comment} = req.body
     await Review.create({ 
         rating: rating,
@@ -76,6 +78,5 @@ router.post('./:productId/reviews', isSignedIn, async (req, res) => {
     })
     res.redirect('/products/' + req.params.productId)
 })
-
 
 module.exports = router;
