@@ -66,4 +66,16 @@ router.delete('/:productId', isSignedIn, async (req, res) => {
     res.redirect('/products')
 })
 
+router.post('./:productId/reviews', isSignedIn, async (req, res) => {
+    const {rating, comment} = req.body
+    await Review.create({ 
+        rating: rating,
+        comment: comment,
+        user: req.session.user._id,
+        product: req.params.productId
+    })
+    res.redirect('/products/' + req.params.productId)
+})
+
+
 module.exports = router;
