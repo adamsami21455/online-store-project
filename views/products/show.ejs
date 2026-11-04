@@ -14,6 +14,8 @@
     <p>Price: $<%= product.price.toFixed(2) %></p>
     <p>Description: <%= product.description %></p>
     
-    
+    <a href="/products/<%= product._id %>/edit">
+    <button type="button"> Edit Product</button>
+    </a>
 </body>
 </html>
