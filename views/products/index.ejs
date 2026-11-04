@@ -7,6 +7,19 @@
 </head>
 <body>
     <h1>All Supplements</h1>
-    
+    <%- include('../partials/navbar') %>
+    <% products.forEach(product => { %>
+        <div>
+            <h2><%= product.name %></h2>
+            <p>Brand: <%= product.brand %></p>
+            <p>Category: <%= product.category %></p>
+            <p>Price: $<%= product.price %></p>
+            <p>Description: <%= product.description %></p>
+            <img src="<%= product.image %>" alt="<%= product.name %>" width="200">
+
+            <a href="/products/<%= product._id %>">View Product</a>
+
+        </div>
+        <hr>
 </body>
 </html>
