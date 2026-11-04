@@ -61,4 +61,9 @@ router.put('/:productId', isSignedIn, async (req, res) => {
     res.redirect('/products')
 })
 
+router.delete('/:productId', isSignedIn, async (req, res) => {
+    await Product.findByIdAndDelete(req.params.productId)
+    res.redirect('/products')
+})
+
 module.exports = router;
