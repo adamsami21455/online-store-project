@@ -11,21 +11,6 @@
     <%- include('./partials/navbar') %>
 
         <h1>Online Gym Supplements Store</h1>
-
-        <a href="/products/new">Add new Product</a>
-        <% products.array.forEach(product=> { %>
-            <div>
-                <h2>
-                    <%= product.name %>
-                </h2>
-                <p>Price: $<%= product.brand %>
-                </p>
-                <p>Description: <%= product.category %>
-                </p>
-                <a href="/products/<%= product._id %>">View Product</a>
-            </div>
-            <a href="/products/<%= product._id %>"> View Product</a>
-            <% }); %>
 </body>
 
 </html>
