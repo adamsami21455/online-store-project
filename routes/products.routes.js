@@ -32,8 +32,10 @@ router.get('/:productId', async (req, res) => {
     if (!product) {
         return res.send('Product not found')
     }
+    const reviews = await Review.find({ product: req.params.productId }).populate('user')
 
-    res.render('products/show.ejs', { product })
+    res.render('products/show.ejs', { product, reviews })
+    
 })
 
 router.get('/', async (req, res) => {
