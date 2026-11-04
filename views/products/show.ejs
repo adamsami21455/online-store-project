@@ -11,7 +11,7 @@
     <img src="<%= product.image %>" alt="<%= product.name %>">
     <p>Brand: <%= product.brand %></p>
     <p>Category: <%= product.category %></p>
-    <p>Price: $<%= product.price.toFixed(2) %></p>
+    <p>Price: <%= product.price.toFixed(3) %> BD</p>
     <p>Description: <%= product.description %></p>
     
     <a href="/products/<%= product._id %>/edit">
@@ -19,5 +19,19 @@
     </a>
     <form action="/products/<%= product._id %>?_method=DELETE" method="POST">
         <button type="submit">Delete Product</button>
+
+        <h2>Reviews:</h2>
+        <form action="/products/<%= product._id %>/reviews" method="POST">
+            <label for="rating">Rate this product:</label>
+            <select name="rating" id="rating">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+            <label for="comment">Leave a comment:</label>
+            <textarea name="comment" id="comment"></textarea>
+            <button type="submit">Submit Review</button>
 </body>
 </html>
