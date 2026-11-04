@@ -1,20 +1,14 @@
 const router = require("express").Router()
 const Product = require('../models/Product')
+const isSignedIn = require('../middleware/is-signed-in.js')
 
-// Create routes
+//  routes
 
-router.get('/new', (req,res)=>{
-    res.render('products/create-product.ejs')
+//Read : display all products
+router.get('/', async (req,res)=>{
+    const products = await Product.find()
+    res.render('products/index.ejs', { products })
 })
 
-router.post('/', async (req,res)=>{
-    const {name, price, description} = req.body // Destructuring
-    const createdProduct = await Product.create({
-        name: name,
-        price: price,
-        description: description
-    })
-    res.redirect('/products')
-})
 
 module.exports = router;
