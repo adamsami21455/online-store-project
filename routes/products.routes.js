@@ -39,4 +39,26 @@ router.get('/', async (req, res) => {
     res.render('products/index.ejs', { products: allProducts })
 })
 
+router.get('/:productId/edit', isSignedIn, async (req, res) => {
+    const product = await Product.findById(req.params.productId)
+    if (!product) {
+        return res.send('Product not found')
+    }
+    res.render('products/edit.ejs', { product })
+})
+
+router.put('/:productId', isSignedIn, async (req, res) => {
+    const { name, brand, category, price, description, image } = req.body
+    const product = await Product.findByIdAndUpdate(req.params.productId, {
+        name: name,
+        brand: brand,
+        category: category,
+        price: price,
+        description: description,
+        image: image
+    })
+
+    res.redirect('/products')
+})
+
 module.exports = router;

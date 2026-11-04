@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <% - include('../partials/navbar') %>
+    <h1>Edit Product</h1>
+    <form action="/products/<%= product._id %>?_method=PUT" method="POST">
+
+        <label for="name">Product Name:</label>
+        <input name="name" id="name" type="text" value="<%= product.name %>">
+
+        <label for="brand">Brand:</label>
+        <input name="brand" id="brand" type="text" value="<%= product.brand %>">
+
+        <label for="category">Category:</label>
+        <input name="category" id="category" type="text" value="<%= product.category %>">
+
+        <label for="price">Price:</label>
+        <input name="price" id="price" type="number" value="<%= product.price %>">
+
+        <label for="description">Description:</label>
+        <textarea name="description" id="description"><%= product.description %></textarea>
+
+        <label for="image">Image URL:</label>
+        <input name="image" id="image" type="text" value="<%= product.image %>">
+
+        <button>Update Product</button>
+</body>
+</html>
