@@ -1,25 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="/css/style.css" />
 </head>
+
 <body>
     <%- include('../partials/navbar') %>
-    <h1><%= product.name %></h1>
-    <img src="<%= product.image %>" alt="<%= product.name %>">
-    <p>Brand: <%= product.brand %></p>
-    <p>Category: <%= product.category %></p>
-    <p>Price: <%= product.price.toFixed(3) %> BD</p>
-    <p>Description: <%= product.description %></p>
-    
-    <a href="/products/<%= product._id %>/edit">
-    <button type="button"> Edit Product</button>
-    </a>
-    <form action="/products/<%= product._id %>?_method=DELETE" method="POST">
-        <button type="submit">Delete Product</button>
+        <h1>
+            <%= product.name %>
+        </h1>
+        <img class="product-detail-image" src="<%= product.image %>" alt="<%= product.name %>">
+        <p>Brand: <%= product.brand %>
+        </p>
+        <p>Category: <%= product.category %>
+        </p>
+        <p>Price: <%= product.price.toFixed(3) %> BD</p>
+        <p>Description: <%= product.description %>
+        </p>
 
+        <div class="product-actions">
+            <a href="/products/<%= product._id %>/edit">
+                <button type="button"> Edit Product</button>
+            </a>
+            <form action="/products/<%= product._id %>?_method=DELETE" method="POST">
+                <button type="submit">Delete Product</button>
+            </form>
+        </div>
         <h2>Reviews:</h2>
         <form action="/products/<%= product._id %>/reviews" method="POST">
             <label for="rating">Rate this product:</label>
@@ -33,5 +43,28 @@
             <label for="comment">Leave a comment:</label>
             <textarea name="comment" id="comment"></textarea>
             <button type="submit">Submit Review</button>
+        </form>
+
+        <h2>Customer Reviews:</h2>
+        <% reviews.forEach(review=> { %>
+            <div>
+                <p><strong>
+                        <%= review.user.username %>
+                    </strong> - Rating: <%= review.rating %>
+                </p>
+                <p>
+                    <%= review.comment %>
+                </p>
+                <% if (user && user._id.toString()===review.user._id.toString()) { %>
+                    <form action="/products/<%= product._id %>/reviews/<%= review._id %>?_method=DELETE" method="POST">
+                        <button type="submit">Delete Review</button>
+                    </form>
+                    <% } %>
+            </div>
+            <hr>
+            <% }) %>
+
+                </div>
 </body>
+
 </html>
