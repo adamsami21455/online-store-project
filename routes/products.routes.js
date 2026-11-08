@@ -8,11 +8,11 @@ const isAdmin = require('../middleware/is-admin.js')
 
 
 // Create : display form to create a new product
-router.get('/new', isSignedIn, (req, res) => {
+router.get('/new', isAdmin, (req, res) => {
     res.render('products/create-new-product.ejs')
 })
 
-router.post('/', isSignedIn, async (req, res) => {
+router.post('/', isAdmin, async (req, res) => {
     const { name, brand, category, price, description, image } = req.body
 
     await Product.create({
@@ -44,7 +44,7 @@ router.get('/', async (req, res) => {
     res.render('products/index.ejs', { products: allProducts })
 })
 
-router.get('/:productId/edit', isSignedIn, async (req, res) => {
+router.get('/:productId/edit', isAdmin, async (req, res) => {
     const product = await Product.findById(req.params.productId)
     if (!product) {
         return res.send('Product not found')
@@ -52,7 +52,7 @@ router.get('/:productId/edit', isSignedIn, async (req, res) => {
     res.render('products/edit.ejs', { product })
 })
 
-router.put('/:productId', isSignedIn, async (req, res) => {
+router.put('/:productId', isAdmin, async (req, res) => {
     const { name, brand, category, price, description, image } = req.body
     const product = await Product.findByIdAndUpdate(req.params.productId, {
         name: name,
@@ -66,7 +66,7 @@ router.put('/:productId', isSignedIn, async (req, res) => {
     res.redirect('/products')
 })
 
-router.delete('/:productId', isSignedIn, async (req, res) => {
+router.delete('/:productId', isAdmin, async (req, res) => {
     await Product.findByIdAndDelete(req.params.productId)
     res.redirect('/products')
 })
