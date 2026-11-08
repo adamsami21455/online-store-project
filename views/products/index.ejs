@@ -10,15 +10,15 @@
     <h1>All Supplements</h1>
     <%- include('../partials/navbar') %>
     <% products.forEach(product => { %>
-        <div>
+        <div class ="product-info">
             <h2><%= product.name %></h2>
             <p>Brand: <%= product.brand %></p>
             <p>Category: <%= product.category %></p>
-            <p>Price: $<%= product.price %></p>
+            <p class = 'product-price'>Price: $<%= product.price %></p>
             <p>Description: <%= product.description %></p>
             <img src="<%= product.image %>" alt="<%= product.name %>" width="200">
 
-            <a href="/products/<%= product._id %>">View Product</a>
+            <a href="/products/<%= product._id %>" class = "action-button">View Product</a>
 
         </div>
     <% }) %>
