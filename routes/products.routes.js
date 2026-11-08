@@ -2,6 +2,7 @@ const router = require("express").Router()
 const isSignedIn = require('../middleware/is-signed-in.js')
 const Product = require('../models/Product')
 const Review = require('../models/Review.js')
+const isAdmin = require('../middleware/is-admin.js')
 
 
 

@@ -11,7 +11,7 @@
     <%- include('../partials/navbar') %>
         <h1>Admin Dashboard</h1>
         <h2>Manage Products</h2>
-        <a href="/products/new">Add new product</a>
+        <a href="/products/new" class = "action-button">Add new product</a>
         <div class="products-container">
             <% products.forEach(product=> { %>
                 <div class="product-card">
@@ -27,11 +27,16 @@
                     </p>
 
                     <p>Price: <%= product.price.toFixed(3) %> BD </p>
-                    <a href="/products/<%= product._id %>">View Product</a>
-                    <a href="/products/<%= product._id %>/edit">Edit</a>
+                    
+                    <div class ="product-actions">
+                    
+                    <a href="/products/<%= product._id %>" class="action-button">View Product</a>
+                    <a href="/products/<%= product._id %>/edit" class="action-button">Edit</a>
                     <form action="/products/<%= product._id %>?_method=DELETE" method="POST">
                         <button type="submit">Delete</button>
                     </form>
+                </div>
+
                 </div>
                 <% }) %>
 </body>
