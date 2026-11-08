@@ -55,6 +55,7 @@ app.use(passUserToView)
 app.use('/auth',authController)
 app.use('/',indexController)
 app.use('/products', require('./routes/products.routes.js'))
+app.use('/admin', require('./routes/admin.routes.js'))
 
 
 
