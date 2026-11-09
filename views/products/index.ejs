@@ -7,9 +7,11 @@
     <link rel="stylesheet" href="/css/style.css" />
 </head>
 <body>
-    <h1>All Supplements</h1>
     <%- include('../partials/navbar') %>
+    <h1>All Supplements</h1>
+    <div class ="products-container">
     <% products.forEach(product => { %>
+        <div class ="product-card">
         <div class ="product-info">
             <h2><%= product.name %></h2>
             <p>Brand: <%= product.brand %></p>
@@ -19,9 +21,9 @@
             <img src="<%= product.image %>" alt="<%= product.name %>" width="200">
 
             <a href="/products/<%= product._id %>" class = "action-button">View Product</a>
-
+        </div>
         </div>
     <% }) %>
-        <hr>
+    </div>
 </body>
 </html>
