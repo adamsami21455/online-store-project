@@ -1,5 +1,5 @@
-<nav>
-
+<nav class = 'main-navbar'>
+<div class = "nav-links">
     <a href="/">Homepage</a>
     <% if (user){ %>
 
@@ -18,5 +18,15 @@
 
 
                     <% } %>
+                </div>
+
+                <% if (user) { %>
+                    <div class="nav-user">
+                        You are: <strong><%= user.username %> </strong>
+                        (<%=user.role %>)
+                        </div>
+                        <% } %>
+
+
 
 </nav>

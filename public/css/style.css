@@ -287,3 +287,32 @@ body > div {
     display: inline-block;
     margin-top: 12px;
 }
+
+.main-navbar {
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 20px 30px;
+}
+
+.nav-links {
+    display:flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 25px;
+}
+
+.nav-user {
+    color:white;
+    background-color: black;
+    border: 1px solid #e63946;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-size: 14px;
+}
+
+.nav-user strong {
+    color:#e63946;
+}
