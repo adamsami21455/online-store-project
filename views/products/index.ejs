@@ -16,8 +16,8 @@
             <h2><%= product.name %></h2>
             <p>Brand: <%= product.brand %></p>
             <p>Category: <%= product.category %></p>
-            <p class = 'product-price'>Price: $<%= product.price %></p>
             <p>Description: <%= product.description %></p>
+            <p class = 'product-price'>Price: <%= product.price %> BD </p>
             <img src="<%= product.image %>" alt="<%= product.name %>" width="200">
 
             <a href="/products/<%= product._id %>" class = "action-button">View Product</a>

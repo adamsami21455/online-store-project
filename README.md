@@ -4,62 +4,95 @@ Gym Supplements Online Store
 
 ## Overview
 
-This is a website that allows users to browse gym supplements, view products and add it to their carts and leave reviews by rating the product and leaving a comment on the products.
+This is a website that allows users to browse different gym supplements, view product information and leave reviews and ratings.
+
+Users can create an account, sign in and view products and share their thoughts about the products. Admins have special priviliges that allow them to add, edit, and delete products from the store (CRUD).
 
 ## Screenshots
+Home page 
 
+![alt text](image-1.png)
+--- 
+Admin Dashboard
 
+![alt text](image.png)
+---
+
+All Products Page
+
+![alt text](image-2.png)
+---
 
 ## Technologies Used
 
 1. HTML
 2. CSS
 3. JavaScript
-
-
-## Getting Started
-
-
-
-
-
+4. Node.js
+5. Express.js
+6. EJS
+7. MongoDB
+8. Mongoose
+9. Git/Github
 
 
 ## User Stories
 1. User should be allowed to browse through all store products
-2. User should be able to view product
-3. Registered User should be allowed to share a review on a product
-4. Registered User should be allowed to rate the product
-5. Registered User should be allowed to leave a comment on a product 
-6. User should be able to see other users leave reviews
-7. User should be allowed to add products to the carts
-8. User with special privileges should be allowed to add a product to store
-9. User with special privileges should be allowed to edit added product to store
-10. User with special privileges should be allowed to delete a product to store
+2. User should be able to view individual product details
+3. A user is allowed to create an account
+4. A registered user is allowed to signin/signout
+5. A registered user is allowed to leave a review on a product
+6. A registered user is allowed to leave a comment on a product
+7. A user is allowed to view reviews left by other users
+8. A registered user is allowed to delete their own reviews
+9. An admin is allowed to add new products to the store
+10. An admin is allowed to edit existing products
+11. An admin is delete products from the store
+12. An admin is allowed to access the admin dashboard
 
-## Database Design
+## Database Design'
 
+3 MongoDB models: 
 
+User – Stores username, password, and role (user or admin).
 
+Product – Stores product name, brand, category, price, description, and image.
 
+Review – Stores product ratings, comments, and the user who wrote the review.
 
+Relationships:
 
+One user can create multiple products.
+
+One user can write multiple reviews.
+
+One product can have multiple reviews.
+
+--- 
+
+![alt text](<ERD gym.png>)
 
 ## Routes
-
 
 
 | Method | Route | Description |
 |---------|-------|-------------|
 | GET | / | Home page |
-| GET | /listings | List all listings |
-| GET | /listings/new | New listing form |
-| POST | /listings | Create listing |
-| GET | /listings/:id | View listing |
-| GET | /listings/:id/edit | Edit listing form |
-| PUT | /listings/:id | Update listing |
-| DELETE | /listings/:id | Delete listing |
-
+| GET | /auth/sign-up | Sign-up form |
+| POST | /auth/sign-up | Register user |
+| GET | /auth/sign-in | Sign-in form |
+| POST | /auth/sign-in | Log in user |
+| GET | /auth/sign-out | Log out user |
+| GET | /products | List all products |
+| GET | /products/new | New product form (Admin) |
+| POST | /products | Create product (Admin) |
+| GET | /products/:productId | View product |
+| GET | /products/:productId/edit | Edit product form (Admin) |
+| PUT | /products/:productId | Update product (Admin) |
+| DELETE | /products/:productId | Delete product (Admin) |
+| POST | /products/:productId/reviews | Create review |
+| DELETE | /products/:productId/reviews/:reviewId | Delete own review |
+| GET | /admin | Admin dashboard |
 
 
 
@@ -69,20 +102,23 @@ This is a website that allows users to browse gym supplements, view products and
 ## Features
 
 - User registration and authentication
-- Browse products
+- Browse all gym supplements
 - View individual product details
-- Product categories
-- Create reviews 
-- Rating product
+- View product categories
+- Create reviews and ratings 
+- Delete own reviews
+- Admin Dashboard
+- Admin product management (CRUD)
 
 
 
 
 ## Future Enhancements
-
-1. Discounting feature
-2. Add product inventory 
-3. Add more gym related products instead of supplements
+1. Add to cart feature
+2. Discount codes feature
+3. Add product inventory management
+4. Add more gym related products instead of supplements such as equipment and accessories
+5. Add online check out and payment system
 
 
 
